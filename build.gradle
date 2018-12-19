@@ -24,8 +24,18 @@ repositories {
     mavenCentral()
 }
 
+// taken from https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+    developmentOnly "org.springframework.boot:spring-boot-devtools"
     testCompile('org.springframework.boot:spring-boot-starter-test') {
         exclude module: 'junit'
     }
