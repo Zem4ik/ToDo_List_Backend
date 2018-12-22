@@ -16,3 +16,5 @@ gradle-app.setting
 # Ignore IntelliJ files
 .idea
 out/
+
+.DS_Store

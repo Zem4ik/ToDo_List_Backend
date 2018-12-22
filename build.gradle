@@ -10,6 +10,9 @@ buildscript {
     }
 }
 
+plugins {
+    id "com.palantir.docker" version "0.20.1"
+}
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
@@ -30,6 +33,14 @@ configurations {
     runtimeClasspath {
         extendsFrom developmentOnly
     }
+}
+
+docker {
+    dependsOn bootJar
+    name "${project.group}/${tasks.bootJar.baseName}"
+    dockerfile file("Docker/Dockerfile")
+    files tasks.bootJar.outputs
+    buildArgs(["JAR_FILE": "${tasks.bootJar.outputs.files.singleFile.name}"])
 }
 
 dependencies {
