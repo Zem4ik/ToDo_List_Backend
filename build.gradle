@@ -12,6 +12,7 @@ buildscript {
 
 plugins {
     id "com.palantir.docker" version "0.20.1"
+    id 'net.ltgt.apt' version '0.10'
 }
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
@@ -48,9 +49,13 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     compile 'org.springframework.boot:spring-boot-starter-security'
-    compile 'org.projectlombok:lombok'
     compile 'org.postgresql:postgresql'
+    
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+    apt 'org.projectlombok:lombok:1.18.4'
+    
     developmentOnly "org.springframework.boot:spring-boot-devtools"
+    
     testCompile('org.springframework.boot:spring-boot-starter-test') {
         exclude module: 'junit'
     }
