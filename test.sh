@@ -3,4 +3,4 @@
 docker stop test
 docker rm test
 ./gradlew docker
-docker run -p 8081:8080 --name test -t -d ru.zem4ik.todo/spring-backend
+docker run --name test --network="host" -t -d ru.zem4ik.todo/spring-backend --server.port=8081
