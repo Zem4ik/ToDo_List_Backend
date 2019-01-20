@@ -1,8 +1,4 @@
 spring:
-  # this is used for frontend debugging (doesn't cache html templates)
-  thymeleaf:
-    cache: false
-
   # ===============================
   # DATABASE - H2
   # ===============================
@@ -10,9 +6,6 @@ spring:
   h2:
     console:
       enabled: true
-
-  datasource:
-    schema: classpath:/db/h2/schema.sql
 
   # ===============================
   # JPA / HIBERNATE

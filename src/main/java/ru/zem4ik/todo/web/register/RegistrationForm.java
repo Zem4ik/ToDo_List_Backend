@@ -12,12 +12,12 @@ public class RegistrationForm {
     private final String name;
     private final String surname;
     private final String email;
-    private final String phoneNumber;
+    private final byte[] image;
 
     public User toUser(PasswordEncoder passwordEncoder) {
         return new User(
                 username, passwordEncoder.encode(password),
-                name, surname, email, phoneNumber);
+                name, surname, email, image);
     }
 
 }

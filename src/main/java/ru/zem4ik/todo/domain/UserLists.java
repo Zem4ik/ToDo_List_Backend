@@ -15,9 +15,9 @@ public class UserLists implements Serializable {
 
     @Id
     @OneToOne(targetEntity = User.class)
-    private final long userID;
+    private long userID;
     @Id
     @OneToOne(targetEntity = List.class)
-    private final long listID;
+    private long listID;
 
 }

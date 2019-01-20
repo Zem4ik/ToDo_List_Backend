@@ -1,6 +1,7 @@
 package ru.zem4ik.todo.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,9 +9,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = "lists")
 @Table(name = "users")
 public class User implements UserDetails {
 
@@ -25,7 +29,15 @@ public class User implements UserDetails {
     private final String name;
     private final String surname;
     private final String email;
-    private final String image;
+    private final byte[] image;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "userLists",
+            joinColumns = {@JoinColumn(name = "userID")},
+            inverseJoinColumns = {@JoinColumn(name = "listID")}
+    )
+    Set<List> lists = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
