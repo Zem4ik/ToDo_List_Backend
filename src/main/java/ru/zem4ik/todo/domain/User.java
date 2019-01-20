@@ -1,9 +1,6 @@
 package ru.zem4ik.todo.domain;
 
-import lombok.AccessLevel;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,8 +11,6 @@ import java.util.Collections;
 
 @Entity
 @Data
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
-@RequiredArgsConstructor
 @Table(name = "users")
 public class User implements UserDetails {
 
@@ -30,7 +25,7 @@ public class User implements UserDetails {
     private final String name;
     private final String surname;
     private final String email;
-    private final String phoneNumber;
+    private final String image;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
