@@ -15,9 +15,8 @@ public class RegistrationForm {
     private final byte[] image;
 
     public User toUser(PasswordEncoder passwordEncoder) {
-        return new User(
-                username, passwordEncoder.encode(password),
-                name, surname, email, image);
+        //todo
+        return new User(username, passwordEncoder.encode(password));
     }
 
 }

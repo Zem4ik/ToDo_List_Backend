@@ -18,10 +18,10 @@ create table lists
   icon bytea
 );
 
-create table userLists
+create table user_lists
 (
-  userID int references users (id),
-  listID int references lists (id),
+  userID bigint references users (id),
+  listID bigint references lists (id),
   primary key (userID, listID)
 );
 

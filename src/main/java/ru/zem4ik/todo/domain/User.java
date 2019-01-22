@@ -1,7 +1,6 @@
 package ru.zem4ik.todo.domain;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,27 +14,31 @@ import java.util.Set;
 @Entity
 @Data
 @EqualsAndHashCode(exclude = "lists")
+@ToString(exclude = "lists")
 @Table(name = "users")
 public class User implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private final String username;
-    private final String password;
-    private final String name;
-    private final String surname;
-    private final String email;
-    private final byte[] image;
+    @NonNull
+    private String username;
+    @NonNull
+    private String password;
+    private String name;
+    private String surname;
+    private String email;
+    private byte[] image;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
+            //todo can't change table name to userLists
             name = "userLists",
-            joinColumns = {@JoinColumn(name = "userID")},
-            inverseJoinColumns = {@JoinColumn(name = "listID")}
+            joinColumns = @JoinColumn(name = "userID", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "listID", referencedColumnName = "id")
     )
     Set<List> lists = new HashSet<>();
 

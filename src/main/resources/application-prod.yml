@@ -4,13 +4,13 @@ spring:
   # DATABASE
   # ===============================
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/todo
+    url: jdbc:postgresql://localhost:5432/todo
     username: todo
     password: ToDo2018
+    schema: classpath:/db/postgres/schema.sql
 
   # ===============================
   # JPA / HIBERNATE
   # ===============================
   jpa:
-    generate-ddl: true
     show-sql: true

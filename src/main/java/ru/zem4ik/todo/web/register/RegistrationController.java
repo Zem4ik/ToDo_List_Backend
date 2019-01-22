@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.zem4ik.todo.data.UserRepository;
 
 @Controller
-@RequestMapping("/register")
+@RequestMapping("/registration")
 public class RegistrationController {
 
     private UserRepository userRepository;
