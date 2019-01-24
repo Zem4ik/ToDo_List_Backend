@@ -13,7 +13,8 @@ spring:
   # JPA / HIBERNATE
   # ===============================
   jpa:
-    show-sql: true
+    hibernate:
+      ddl-auto: validate
 
 server:
   ssl:

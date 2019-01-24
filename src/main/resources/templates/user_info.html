@@ -11,7 +11,7 @@
 <p th:text="${user.name}"></p>
 <p th:text="${user.surname}"></p>
 <p th:text="${user.email}"></p>
-<p th:text="${user.phoneNumber}"></p>
+<img th:src="${user.image}"/>
 </body>
 
 <form method="POST" th:action="@{/logout}">

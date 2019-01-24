@@ -5,18 +5,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.zem4ik.todo.domain.User;
 
 @Data
-public class RegistrationForm {
+class RegistrationForm {
 
     private final String username;
     private final String password;
     private final String name;
     private final String surname;
     private final String email;
-    private final byte[] image;
 
-    public User toUser(PasswordEncoder passwordEncoder) {
-        //todo
-        return new User(username, passwordEncoder.encode(password));
+    User toUser(PasswordEncoder passwordEncoder) {
+        User user = new User(username, passwordEncoder.encode(password));
+        user.setName(name);
+        user.setSurname(surname);
+        user.setEmail(email);
+        return user;
     }
 
 }

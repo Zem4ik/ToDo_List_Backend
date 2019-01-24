@@ -8,28 +8,28 @@
   <body>
     <h1>Register</h1>
     
-    <form method="POST" th:action="@{/register}" id="registerForm">
+    <form method="POST" th:action="@{/registration}" enctype="multipart/form-data" id="registerForm">
     
         <label for="username">Username: </label>
-        <input type="text" name="username"/><br/>
+        <input type="text" name="username" id="username"/><br/>
 
         <label for="password">Password: </label>
-        <input type="password" name="password"/><br/>
+        <input type="password" name="password" id="password"/><br/>
 
         <label for="confirm">Confirm password: </label>
-        <input type="password" name="confirm"/><br/>
+        <input type="password" name="confirm" id="confirm"/><br/>
 
-        <label for="fullname">First name: </label>
-        <input type="text" name="name"/><br/>
+        <label for="name">First name: </label>
+        <input type="text" name="name" id="name"/><br/>
+
+        <label for="surname">Last name: </label>
+        <input type="text" name="surname" id="surname"/><br/>
     
-        <label for="street">Surname: </label>
-        <input type="text" name="surname"/><br/>
-    
-        <label for="city">E-mail: </label>
-        <input type="text" name="email"/><br/>
-    
-        <label for="state">Phone: </label>
-        <input type="text" name="phoneNumber"/><br/>
+        <label for="email">email: </label>
+        <input type="text" name="email" id="email"/><br/>
+
+        <label for="image">Image: </label>
+        <input type="file" name="image" id="image"/><br/>
     
         <input type="submit" value="Register"/>
     </form>

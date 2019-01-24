@@ -2,18 +2,19 @@ create table users
 (
   id       identity primary key,
   username varchar(50) not null unique,
-  password varchar(50) not null,
+  password varchar(100) not null,
   name     varchar(50),
   surname  varchar(50),
   email    varchar(50),
-  image    bytea
+-- 4096 - maximum path length
+  image    varchar(4096)
 );
 
 create table lists
 (
   id   identity primary key,
   name varchar(50) not null,
-  icon bytea
+  icon varchar(4096)
 );
 
 create table user_lists

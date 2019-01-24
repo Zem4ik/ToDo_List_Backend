@@ -2,10 +2,12 @@ package ru.zem4ik.todo.web.register;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import ru.zem4ik.todo.data.UserRepository;
+import ru.zem4ik.todo.domain.User;
+
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/registration")
@@ -26,8 +28,10 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String processRegistration(RegistrationForm form) {
-        userRepository.save(form.toUser(passwordEncoder));
+    public String processRegistration(@RequestParam(name = "image") MultipartFile image, RegistrationForm form) {
+        User user = form.toUser(passwordEncoder);
+        //todo saving images
+        userRepository.save(user);
         return "redirect:/login";
     }
 

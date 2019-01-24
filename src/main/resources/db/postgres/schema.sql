@@ -4,7 +4,7 @@ create table users
 (
   id       bigserial primary key,
   username varchar(50) not null check ( username <> '' ) unique,
-  password varchar(50) not null,
+  password varchar(100) not null,
   name     varchar(50),
   surname  varchar(50),
   email    varchar(50),
