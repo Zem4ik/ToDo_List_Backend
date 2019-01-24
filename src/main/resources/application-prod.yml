@@ -17,7 +17,7 @@ spring:
 
 server:
   ssl:
-    key-store: /etc/letsencrypt/live/yourdomain.com/keystore.p12
+    key-store: /etc/letsencrypt/live/zem4ik.ru/keystore.p12
     key-store-password: ToDo@)!(
     keyStoreType: PKCS12
     key-alias: tomcat
