@@ -46,7 +46,7 @@ docker {
 
 dependencies {
 //  https://docs.spring.io/spring-boot/docs/2.0.5.RELEASE/reference/html/configuration-metadata.html#configuration-metadata-annotation-processor
-    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    compileOnly "org.springframework.boot:spring-boot-configuration-processor"
     
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
