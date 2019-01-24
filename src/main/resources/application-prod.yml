@@ -14,3 +14,10 @@ spring:
   # ===============================
   jpa:
     show-sql: true
+
+server:
+  ssl:
+    key-store: /etc/letsencrypt/live/yourdomain.com/keystore.p12
+    key-store-password: ToDo@)!(
+    keyStoreType: PKCS12
+    key-alias: tomcat
