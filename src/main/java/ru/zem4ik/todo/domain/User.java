@@ -33,7 +33,7 @@ public class User implements UserDetails {
     private String name;
     private String surname;
     private String email;
-    private byte[] image;
+    private String image;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(

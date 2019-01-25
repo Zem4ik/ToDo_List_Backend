@@ -17,9 +17,9 @@ public class ListUtils {
         return createListById(nextListId++, null);
     }
 
-    public static List createListById(int id, byte[] icon) {
+    public static List createListById(int id, String iconPath) {
         List list = new List(NAME + id);
-        list.setIcon(icon);
+        list.setIcon(iconPath);
         return list;
     }
 }

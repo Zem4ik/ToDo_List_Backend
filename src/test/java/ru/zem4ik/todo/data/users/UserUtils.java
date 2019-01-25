@@ -20,8 +20,8 @@ public class UserUtils {
         return createUserById(nextUserId++, null);
     }
 
-    public static User createUserById(int id, byte[] image) {
-        return createUserByIds(id, id, id, id, id, image);
+    public static User createUserById(int id, String imagePath) {
+        return createUserByIds(id, id, id, id, id, imagePath);
     }
 
     public static User createUserByIds(int userNameId,
@@ -29,13 +29,13 @@ public class UserUtils {
                            int nameId,
                            int surnameId,
                            int emailId,
-                           byte[] image) {
+                           String imagePath) {
         User user = new User(USERNAME + userNameId,
                 PASSWORD + passwordId);
         user.setName(NAME + nameId);
         user.setUsername(SURNAME + surnameId);
         user.setEmail(EMAIL + emailId);
-        user.setImage(image);
+        user.setImage(imagePath);
         return user;
     }
 

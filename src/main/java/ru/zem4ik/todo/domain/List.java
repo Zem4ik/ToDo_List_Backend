@@ -20,7 +20,7 @@ public class List {
 
     @NonNull
     private String name;
-    private byte[] icon;
+    private String icon;
 
     @ManyToMany(mappedBy = "lists")
     private Set<User> users = new HashSet<>();

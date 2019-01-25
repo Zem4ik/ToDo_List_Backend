@@ -13,32 +13,29 @@
 </header>
 <main>
 
-    <form method="POST" th:action="@{/registration}" enctype="multipart/form-data" id="registerForm">
+    <form method="POST" th:action="@{/registration}" th:object="${registrationForm}" enctype="multipart/form-data" id="registerForm">
         <div>
             <label for="Username">Username</label>
             <input type="text" id="Username" required autocomplete="off" name="username">
         </div>
-        <span th:if="${param.error != null}" class="alert">
-            Unable to login. Check your username and password.
+        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="alert">
+            Check your username.
         </span>
         <div>
             <label for="Password">Password</label>
             <input type="password" id="Password" required autocomplete="off" name="password" value=""
                    onkeyup='ValidatePasswords();'>
         </div>
-        <span th:if="${param.error != null}" class="alert">
-            Unable to login. Check your username and password.
+        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert">
+            Check your password.
         </span>
         <div>
             <label for="ConfirmPassword">Confirm password</label>
             <input type="password" id="ConfirmPassword" required autocomplete="off" name="confirm" value=""
                    onkeyup='ValidatePasswords();'>
         </div>
-        <span th:if="${param.error != null}" class="alert">
-            Unable to login. Check your username and password.
-        </span>
 
-        <div class="ConfirmError" id="validation">Пароли не совпадают</div>
+        <div class="ConfirmError" id="validation">Passwords should ba same</div>
 
         <div>
             <label for="FirstName">First name</label>
@@ -52,8 +49,8 @@
             <label for="E-mail">E-mail</label>
             <input type="email" id="E-mail" autocomplete="off" name="email">
         </div>
-        <span th:if="${param.error != null}" class="alert">
-            Unable to login. Check your username and password.
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert">
+            Check your e-mail.
         </span>
         <div>
             <label for="file">Profile photo</label>
