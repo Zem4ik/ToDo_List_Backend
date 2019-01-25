@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.zem4ik.todo.data.ListRepository;
 import ru.zem4ik.todo.data.TaskRepository;
 import ru.zem4ik.todo.data.UserRepository;
 import ru.zem4ik.todo.domain.List;

@@ -13,7 +13,8 @@
 </header>
 <main>
 
-    <form method="POST" th:action="@{/registration}" th:object="${registrationForm}" enctype="multipart/form-data" id="registerForm">
+    <form method="POST" th:action="@{/registration}" th:object="${registrationForm}" enctype="multipart/form-data"
+          id="registerForm">
         <div>
             <label for="Username">Username</label>
             <input type="text" id="Username" required autocomplete="off" name="username">

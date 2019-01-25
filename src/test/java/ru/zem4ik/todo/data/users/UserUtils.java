@@ -25,11 +25,11 @@ public class UserUtils {
     }
 
     public static User createUserByIds(int userNameId,
-                           int passwordId,
-                           int nameId,
-                           int surnameId,
-                           int emailId,
-                           String imagePath) {
+                                       int passwordId,
+                                       int nameId,
+                                       int surnameId,
+                                       int emailId,
+                                       String imagePath) {
         User user = new User(USERNAME + userNameId,
                 PASSWORD + passwordId);
         user.setName(NAME + nameId);
