@@ -110,3 +110,8 @@ label {
     color: red;
     text-align: center;
 }
+
+.ConfirmError{
+    color: red;
+    display: none;
+}
