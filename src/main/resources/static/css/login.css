@@ -16,7 +16,7 @@ main {
     height: 60vh;
 }
 
-div{
+div {
     margin-top: 10px;
     width: 100%;
     display: block;
@@ -49,8 +49,6 @@ a {
 
 form {
     width: 25%;
-
-
 }
 
 input[type="text"], input[type="password"] {
@@ -58,17 +56,14 @@ input[type="text"], input[type="password"] {
     padding: 10px 0px;
     border-width: 0;
     background: white;
-
     margin: 10px 0;
     outline: 1px solid black;
     text-align: center;
-
 }
 
 h1 {
     font-size: 24px;
     font-weight: 400;
-
     margin-top: 50px;
 }
 
