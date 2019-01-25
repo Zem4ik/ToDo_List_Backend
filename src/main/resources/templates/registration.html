@@ -14,39 +14,44 @@
 <main>
 
     <form method="POST" th:action="@{/registration}" enctype="multipart/form-data" id="registerForm">
-<div>
-    <label for="Username">Username</label>
-    <input type="text" id="Username" required autocomplete="off" name="username">
-</div>
+        <div>
+            <label for="Username">Username</label>
+            <input type="text" id="Username" required autocomplete="off" name="username">
+        </div>
         <span th:if="${param.error != null}" class="alert">
             Unable to login. Check your username and password.
         </span>
-    <div>
-        <label for="Password">Password</label>
-        <input type="password" id="Password" required autocomplete="off" name="password">
-    </div>
+        <div>
+            <label for="Password">Password</label>
+            <input type="password" id="Password" required autocomplete="off" name="password" value=""
+                   onkeyup='ValidatePasswords();'>
+        </div>
         <span th:if="${param.error != null}" class="alert">
             Unable to login. Check your username and password.
         </span>
-    <div>
-        <label for="ConfirmPassword">Confirm password</label>
-        <input type="password" id="ConfirmPassword" required autocomplete="off" name="confirm">
-    </div>
+        <div>
+            <label for="ConfirmPassword">Confirm password</label>
+            <input type="password" id="ConfirmPassword" required autocomplete="off" name="confirm" value=""
+                   onkeyup='ValidatePasswords();'>
+        </div>
         <span th:if="${param.error != null}" class="alert">
             Unable to login. Check your username and password.
         </span>
-    <div>
-        <label for="FirstName">First name</label>
-        <input type="text" id="FirstName" required autocomplete="off" name="name">
-    </div>
-    <div>
-        <label for="Surname">Surname</label>
-        <input type="text" id="Surname" required autocomplete="off" name="surname">
-    </div>
-    <div>
-        <label for="E-mail">E-mail</label>
-        <input type="email" id="E-mail" required autocomplete="off" name="email">
-    </div>
+
+        <div class="ConfirmError" id="validation">Пароли не совпадают</div>
+
+        <div>
+            <label for="FirstName">First name</label>
+            <input type="text" id="FirstName" autocomplete="off" name="name">
+        </div>
+        <div>
+            <label for="Surname">Surname</label>
+            <input type="text" id="Surname" autocomplete="off" name="surname">
+        </div>
+        <div>
+            <label for="E-mail">E-mail</label>
+            <input type="email" id="E-mail" autocomplete="off" name="email">
+        </div>
         <span th:if="${param.error != null}" class="alert">
             Unable to login. Check your username and password.
         </span>
@@ -61,5 +66,6 @@
     </form>
 </main>
 <footer></footer>
+<script type="text/javascript" th:src="@{/js/registration.js}"></script>
 </body>
 </html>
