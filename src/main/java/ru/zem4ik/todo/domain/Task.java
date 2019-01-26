@@ -21,7 +21,7 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "listId", nullable = false)
     @NonNull
-    private List list;
+    private TasksList list;
     @NonNull
     private String title;
     private boolean important;

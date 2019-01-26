@@ -13,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Table(name = "lists")
-public class List {
+public class TasksList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

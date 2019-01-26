@@ -16,11 +16,4 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/login");
     }
 
-    @GetMapping(value = "/")
-    public RedirectView main() {
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("login");
-        return redirectView;
-    }
-
 }

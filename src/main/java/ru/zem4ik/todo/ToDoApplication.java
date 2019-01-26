@@ -8,9 +8,12 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.zem4ik.todo.data.TaskRepository;
 import ru.zem4ik.todo.data.UserRepository;
-import ru.zem4ik.todo.domain.List;
+import ru.zem4ik.todo.domain.TasksList;
 import ru.zem4ik.todo.domain.Task;
 import ru.zem4ik.todo.domain.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class ToDoApplication {
@@ -25,12 +28,22 @@ public class ToDoApplication {
                                         PasswordEncoder passwordEncoder) {
         return args -> {
             User user = new User("todo", passwordEncoder.encode("todo"));
-            List list = new List("testList");
-            user.getLists().add(list);
+
+            List<TasksList> lists = new ArrayList<>(10);
+            for (int i = 0; i < 10; i++) {
+                TasksList list =new TasksList("testList" + i);
+                lists.add(list);
+            }
+            user.getLists().addAll(lists);
             user = userRepository.save(user);
-            list = user.getLists().iterator().next();
-            Task task = new Task(list, "first task");
-            taskRepository.save(task);
+            lists = new ArrayList<>(user.getLists());
+            for (TasksList list : lists) {
+                for (int i = 0; i < 2; ++i) {
+                    list.getTasks().add(new Task(list, "testTask" + i));
+                }
+                taskRepository.saveAll(list.getTasks());
+            }
+
             User user2 = new User("test", passwordEncoder.encode("test"));
             userRepository.save(user2);
         };
