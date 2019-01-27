@@ -53,6 +53,7 @@ function addList() {
         data: JSON.stringify({
             "name": text
         }),
+        contentType: "application/json",
         success: function (result, _, xhr) {
             if (xhr.status === 201) {
                 addListHTML(result);

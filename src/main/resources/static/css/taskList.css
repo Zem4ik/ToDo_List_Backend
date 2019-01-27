@@ -73,6 +73,7 @@ a {
 
 #lists {
     width: 100%;
+    min-height: 30px;
 }
 
 #lists a {
