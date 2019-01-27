@@ -16,7 +16,8 @@ a {
 }
 
 .back {
-    width: 300px;
+    min-width: 310px;
+    width: 310px;
     height: 100px;
     top: 0;
     left: 0;
@@ -36,7 +37,8 @@ a {
 #header .headertext {
     display: flex;
     height: 100px;
-    width: 200px;
+    width: 210px;
+    min-width: 210px;
 }
 
 #header .headertext a {

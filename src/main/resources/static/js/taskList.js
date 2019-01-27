@@ -48,6 +48,10 @@ function createLists(lists) {
 function addList() {
     let input = document.getElementById("listTextAdd");
     let text = input.value;
+    if (!/\S/.test(text)) {
+        alert("Введите непустое название!");
+        return false;
+    }
     $.ajax({
         url: currentURL + '/api/list',
         type: 'POST',
@@ -103,6 +107,10 @@ function deleteList(id) {
 function addTask() {
     let taskInput = document.getElementById("taskTextAdd");
     let text = taskInput.value;
+    if (!/\S/.test(text)) {
+        alert("Введите непустое название!");
+        return false;
+    }
     $.ajax({
         url: currentURL + '/api/task',
         type: 'POST',
