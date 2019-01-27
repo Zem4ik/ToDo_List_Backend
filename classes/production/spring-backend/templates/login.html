@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignIn</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+<header>
+    <h1>Welcome to ToDoList</h1>
+</header>
+<main>
+    <div class="svgLogo">
+        <img th:src="@{images/todo.svg}">
+    </div>
+    <form method="POST" th:action="@{/login}" id="loginForm">
+        <div>
+            <label for="login">Login</label>
+            <input type="text" placeholder="Enter login" id="login" required autocomplete="off" name="username">
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input type="password" placeholder="Enter password" id="password" required autocomplete="off"
+                   name="password">
+        </div>
+        <span th:if="${param.error != null}" class="alert">
+            Unable to login. Check your username and password.
+        </span>
+        <div class="SubmitButton">
+            <button type="submit">Go to</button>
+        </div>
+        <span><a th:href="@{/registration}">New here? Click here to register.</a> </span>
+    </form>
+
+</main>
+<footer></footer>
+</body>
+</html>

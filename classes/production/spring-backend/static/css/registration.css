@@ -1,0 +1,114 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60vh;
+}
+
+div {
+    margin-top: 10px;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+
+button {
+    padding: 10px 0;
+    border-width: 0;
+    display: block;
+    width: 120px;
+    margin: 25px auto 0;
+    background: #7b7b7b;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    text-transform: uppercase;
+}
+
+a {
+    display: block;
+    text-align: right;
+}
+
+.SubmitButton {
+    width: 100%;
+    display: block;
+}
+
+form {
+
+    width: 20%;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 100%;
+    padding: 10px 0px;
+    border-width: 0;
+    background: white;
+
+    margin-top: 5px;
+    outline: 1px solid black;
+    text-align: center;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 10px 0px;
+    border-width: 0;
+    background: white;
+
+    margin: 0;
+
+    text-align: center;
+}
+
+
+h3 {
+    font-size: 24px;
+    font-weight: 400;
+
+    margin-top: 50px;
+}
+
+
+button:hover {
+    color: black;
+}
+
+
+a {
+    margin-top: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+label {
+    color: #7b7b7b;
+
+}
+
+.alert {
+    width: 100%;
+    display: block;
+    margin-top: 10px;
+    color: red;
+    text-align: center;
+}
+
+.ConfirmError {
+    color: red;
+    display: none;
+}

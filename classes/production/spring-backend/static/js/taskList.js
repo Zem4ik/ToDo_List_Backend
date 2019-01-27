@@ -27,21 +27,6 @@ function createLists(lists) {
     }
 }
 
-function deleteTask(id) {
-    let elem = document.getElementById(id);
-    let parentElem = document.getElementById("tasks");
-    $.ajax({
-        url: 'localhost:8080/api/task/' + id,
-        type: 'DELETE',
-        success: function (result) {
-            console.log(result);
-        },
-        error: function (result) {
-            console.log("ERROR: " + result);
-        }
-    });
-}
-
 
 function listSelected(id, name) {
     let tasksName = document.querySelector("div.main > h2");
@@ -59,9 +44,7 @@ function listSelected(id, name) {
         let task = tasks[i];
         let newLI = document.createElement('li');
         newLI.setAttribute('id', task.id);
-        newLI.innerHTML = `<div class="line" id="line${task.id}"><a href="#" onclick="deleteTask(${task.id})"` +
-                          `><span id="span${task.id}">&#10007;</span></a>\n<label` +
-                          ` for="span${task.id}">${task.title}</label></div>`;
+        newLI.innerHTML = `<div class="line" id=${task.id}><a href="#"><span id="span${task.id}">&#10007;</span></a>\n<label for="span${task.id}">${task.title}</label></div>`;
         taskList.appendChild(newLI);
     }
 
