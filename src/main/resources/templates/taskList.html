@@ -28,6 +28,13 @@
 	<div class="mainpart">
 		<div class="sideMenu">
 			<div class="sidenav">
+                <div class="addList">
+                    <h3>Добавить список:</h3>
+                    <div id="listAddDiv">
+                        <input type="text" id="listTextAdd" pattern="^(?!\s*$).+" maxlength="50" placeholder="Введите название списка">
+                        <a href="#" onclick="addList()"><span id="checkAddList">&#10004;</span></a>
+                    </div>
+                </div>
 				<div id="lists">
 		  			<div class="listLine">
                         <a href="#" class="listNameLine">List 1</a>
@@ -52,7 +59,7 @@
             <div class="addTask">
                 <h4>Добавить задачу:</h4>
                 <div id="taskAddDiv">
-                    <input type="text" id="taskTextAdd" maxlength="50" placeholder="Введите задачу">
+                    <input type="text" id="taskTextAdd" pattern="^(?!\s*$).+" maxlength="50" placeholder="Введите задачу">
                     <a href="#" onclick="addTask()"><span id="checkAddTask">&#10004;</span></a>
                 </div>
             </div>

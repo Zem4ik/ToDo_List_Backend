@@ -10,8 +10,29 @@ window.onload = (function () {
     listSelected(lists[0].id, lists[0].name);
 });
 
-function createLists(lists) {
+function addListHTML(list) {
+    let taskLists = document.getElementById("lists");
+    let newDivT = document.createElement('div');
+    newDivT.setAttribute('class', 'listLine');
+    newDivT.setAttribute('id', 'list' + list.id);
 
+    let newT = document.createElement('a');
+    newT.setAttribute('href', "#");
+    newT.setAttribute('class', 'listNameLine');
+    newT.setAttribute('onClick', `listSelected(${list.id}, "${list.name}")`);
+
+    let newButton = document.createElement('a');
+    newButton.setAttribute('href', '#');
+    newButton.setAttribute('class', 'spanNameLine');
+    newButton.setAttribute('onClick', `deleteList(${list.id})`);
+    newButton.innerHTML = `<span>&#10007;</span>`;
+    newT.text = list.name;
+    taskLists.appendChild(newDivT);
+    newDivT.appendChild(newT);
+    newDivT.appendChild(newButton);
+}
+
+function createLists(lists) {
     let taskLists = document.getElementById("lists");
     while (taskLists.firstChild) {
         taskLists.removeChild(taskLists.firstChild);
@@ -19,25 +40,32 @@ function createLists(lists) {
 
     for (let i in lists) {
         let list = lists[i];
-        let newDivT = document.createElement('div');
-        newDivT.setAttribute('class', 'listLine');
-        newDivT.setAttribute('id', 'list' + list.id);
-
-        let newT = document.createElement('a');
-        newT.setAttribute('href', "#");
-        newT.setAttribute('class', 'listNameLine');
-        newT.setAttribute('onClick', `listSelected(${list.id}, "${list.name}")`);
-
-        let newButton = document.createElement('a');
-        newButton.setAttribute('href', '#');
-        newButton.setAttribute('class', 'spanNameLine');
-        newButton.setAttribute('onClick', `deleteList(${list.id})`);
-        newButton.innerHTML = `<span>&#10007;</span>`;
-        newT.text = list.name;
-        taskLists.appendChild(newDivT);
-        newDivT.appendChild(newT);
-        newDivT.appendChild(newButton);
+        addListHTML(list);
     }
+}
+
+function addList() {
+    let input = document.getElementById("listTextAdd");
+    let text = input.value;
+    $.ajax({
+        url: currentURL + '/api/list',
+        type: 'POST',
+        data: JSON.stringify({
+            "name": text
+        }),
+        success: function (result, _, xhr) {
+            if (xhr.status === 201) {
+                addListHTML(result);
+                tasksMap[result.id] = [];
+                input.value = "";
+            } else {
+                alert("Что-то пошло не так. Код: " + xhr.status);
+            }
+        },
+        error: function (result, _, xhr) {
+            alert("Что-то пошло не так. Код ошибки: " + xhr.status);
+        }
+    });
 }
 
 function deleteList(id) {
@@ -126,6 +154,7 @@ function deleteTask(id) {
 }
 
 function listSelected(id, name) {
+    currentListId = id;
     let tasksName = document.querySelector("div.main > h2");
     tasksName.textContent = name;
 
