@@ -19,32 +19,64 @@ function createLists(lists) {
 
     for (let i in lists) {
         let list = lists[i];
+        let newDivT = document.createElement('div');
+        newDivT.setAttribute('class', 'listLine');
+        newDivT.setAttribute('id', 'list' + list.id);
+
         let newT = document.createElement('a');
         newT.setAttribute('href', "#");
-        newT.setAttribute('id', list.id);
+        newT.setAttribute('class', 'listNameLine');
         newT.setAttribute('onClick', `listSelected(${list.id}, "${list.name}")`);
 
+        let newButton = document.createElement('a');
+        newButton.setAttribute('href', '#');
+        newButton.setAttribute('class', 'spanNameLine');
+        newButton.setAttribute('onClick', `deleteList(${list.id})`);
+        newButton.innerHTML = `<span>&#10007;</span>`;
         newT.text = list.name;
-        taskLists.appendChild(newT);
+        taskLists.appendChild(newDivT);
+        newDivT.appendChild(newT);
+        newDivT.appendChild(newButton);
     }
+}
+
+function deleteList(id) {
+    let selectedList = document.getElementById("list" + id);
+    let parent = document.getElementById("lists");
+    $.ajax({
+        url: currentURL + '/api/list/' + id,
+        type: 'DELETE',
+        success: function (result, status, xhr) {
+            if (xhr.status === 204) {
+                parent.removeChild(selectedList);
+                tasksMap[id] = null;
+            } else {
+                alert("Что-то пошло не так. Код: " + xhr.status);
+            }
+        },
+        error: function (result, status, xhr) {
+            alert("Что-то пошло не так. Код: " + xhr.status);
+        }
+    });
 }
 
 function addTask() {
     let taskInput = document.getElementById("taskTextAdd");
-    let text = taskInput.textContent;
+    let text = taskInput.value;
     $.ajax({
         url: currentURL + '/api/task',
         type: 'POST',
-        data: {
+        data: JSON.stringify({
             "listId": currentListId,
             "title": text
-        },
+        }),
+        contentType: "application/json",
         success: function (result, status, xhr) {
             addTaskHTML(result);
             let array = tasksMap[currentListId];
             array.push(result);
         },
-        error: function (result, _, xhr) {
+        error: function (result, status, xhr) {
             alert("Что-то пошло не так. Код ошибки: " + xhr.status);
         }
     });
