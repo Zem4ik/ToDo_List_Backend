@@ -8,14 +8,14 @@ create table users
   name     varchar(50),
   surname  varchar(50),
   email    varchar(50),
-  image    bytea
+  image    varchar(4096)
 );
 
 create table lists
 (
   id   bigserial primary key,
   name varchar(50) not null,
-  icon bytea
+  icon    varchar(4096)
 );
 
 create table user_lists
@@ -28,7 +28,7 @@ create table user_lists
 create table tasks
 (
   id          bigserial primary key,
-  listId      int references lists (id) on delete cascade,
+  list_id     bigint references lists (id) on delete cascade,
   title       varchar(50) not null,
   important   boolean,
   date        date,
