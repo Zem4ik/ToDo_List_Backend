@@ -73,7 +73,7 @@ a {
 
 #lists {
     width: 100%;
-    min-height: 30px;
+    min-height: 65px;
 }
 
 #lists a {
@@ -202,4 +202,8 @@ a {
     margin-left: 10px;
     color: green;
     line-height: 40px;
+}
+
+.addTask {
+    display: none;
 }
