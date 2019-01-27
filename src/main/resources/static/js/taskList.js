@@ -72,9 +72,14 @@ function addTask() {
         }),
         contentType: "application/json",
         success: function (result, status, xhr) {
-            addTaskHTML(result);
-            let array = tasksMap[currentListId];
-            array.push(result);
+            if (xhr.status === 204) {
+                addTaskHTML(result);
+                let array = tasksMap[currentListId];
+                array.push(result);
+                taskInput.value = "";
+            } else {
+                alert("Что-то пошло не так. Код: " + xhr.status);
+            }
         },
         error: function (result, status, xhr) {
             alert("Что-то пошло не так. Код ошибки: " + xhr.status);
