@@ -38,7 +38,7 @@ public class ListsController {
             listToTasks.put(list.getId(), tasks);
         }
         model.addAttribute("lists", lists);
-        model.addAttribute("tasks", listToTasks);
+        model.addAttribute("tasksMap", listToTasks);
         return "taskList";
     }
 

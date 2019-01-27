@@ -39,7 +39,7 @@ public class ToDoApplication {
             lists = new ArrayList<>(user.getLists());
             for (TasksList list : lists) {
                 for (int i = 0; i < 2; ++i) {
-                    list.getTasks().add(new Task(list, "testTask" + i));
+                    list.getTasks().add(new Task(list, list.getName() + "_testTask" + i));
                 }
                 taskRepository.saveAll(list.getTasks());
             }

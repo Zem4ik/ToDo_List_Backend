@@ -1,9 +1,11 @@
+var currentListId;
+
 window.onload = (function () {
     console.log(lists);
-    console.log(tasks);
-
+    console.log(tasksMap);
+    currentListId = lists[0].id;
     createLists(lists);
-    task();
+    listSelected(lists[0].id, lists[0].name);
 });
 
 function createLists(lists) {
@@ -18,19 +20,32 @@ function createLists(lists) {
         let newT = document.createElement('a');
         newT.setAttribute('href', "#");
         newT.setAttribute('id', list.id);
+        newT.setAttribute('onClick', `listSelected(${list.id}, "${list.name}")`);
+
         newT.text = list.name;
         taskLists.appendChild(newT);
     }
 }
 
-function task(tasks) {
-    let taskLists = document.getElementById("tasks");
 
-    for (let task in tasks) {
+function listSelected(id, name) {
+    let tasksName = document.querySelector("div.main > h2");
+    tasksName.textContent = name;
+
+    let taskList = document.getElementById("tasks");
+
+    while (taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild);
+    }
+
+    let tasks = tasksMap[id];
+
+    for (let i in tasks) {
+        let task = tasks[i];
         let newLI = document.createElement('li');
-        newL.setAttribute('id', task.id);
-        newLI.innerHTML = `<div class="line" id=${task.id}><a href="#"><span id="span${task.id}">&#10007;</span></a>\n<label for="span${task.id}">${task}</label></div>`;
-        tasks.appendChild(newLI);
+        newLI.setAttribute('id', task.id);
+        newLI.innerHTML = `<div class="line" id=${task.id}><a href="#"><span id="span${task.id}">&#10007;</span></a>\n<label for="span${task.id}">${task.title}</label></div>`;
+        taskList.appendChild(newLI);
     }
 
 }
