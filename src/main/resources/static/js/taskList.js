@@ -1,16 +1,20 @@
 window.onload = (function () {
     console.log(lists);
-    console.log(taks);
+    console.log(tasks);
 
-    createLists();
+    createLists(lists);
     task();
 });
 
 function createLists(lists) {
 
     let taskLists = document.getElementById("lists");
+    while (taskLists.firstChild) {
+        taskLists.removeChild(taskLists.firstChild);
+    }
 
-    for (let list in lists) {
+    for (let i in lists) {
+        let list = lists[i];
         let newT = document.createElement('a');
         newT.setAttribute('href', "#");
         newT.setAttribute('id', list.id);

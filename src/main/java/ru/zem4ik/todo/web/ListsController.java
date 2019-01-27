@@ -31,13 +31,15 @@ public class ListsController {
 
     @GetMapping
     public String mainPage(Model model, @AuthenticationPrincipal User user) {
-        Map<TasksList, List<Task>> listToTasks = new HashMap<>();
+        Map<Long, List<Task>> listToTasks = new HashMap<>();
         List<TasksList> lists = listRepository.findByUsers(user);
         for (TasksList list : lists) {
             List<Task> tasks = taskRepository.findByList(list);
-            listToTasks.put(list, tasks);
+            listToTasks.put(list.getId(), tasks);
         }
-        return "index";
+        model.addAttribute("lists", lists);
+        model.addAttribute("tasks", listToTasks);
+        return "taskList";
     }
 
 }
