@@ -1,4 +1,6 @@
 var currentListId;
+var currentURL = window.location.origin;
+
 
 window.onload = (function () {
     console.log(lists);
@@ -27,21 +29,64 @@ function createLists(lists) {
     }
 }
 
-function deleteTask(id) {
-    let elem = document.getElementById(id);
-    let parentElem = document.getElementById("tasks");
+function addTask() {
+    let taskInput = document.getElementById("taskTextAdd");
+    let text = taskInput.textContent;
     $.ajax({
-        url: 'localhost:8080/api/task/' + id,
-        type: 'DELETE',
-        success: function (result) {
-            console.log(result);
+        url: currentURL + '/api/task',
+        type: 'POST',
+        data: {
+            "listId": currentListId,
+            "title": text
         },
-        error: function (result) {
-            console.log("ERROR: " + result);
+        success: function (result, status, xhr) {
+            addTaskHTML(result);
+            let array = tasksMap[currentListId];
+            array.push(result);
+        },
+        error: function (result, _, xhr) {
+            alert("Что-то пошло не так. Код ошибки: " + xhr.status);
         }
     });
 }
 
+function addTaskHTML(elem) {
+    let taskList = document.getElementById("tasks");
+
+    let newLI = document.createElement('li');
+    newLI.setAttribute('id', elem.id);
+    newLI.innerHTML = `<div class="line" id="line${elem.id}"><a href="#" onclick="deleteTask(${elem.id})"` +
+        `><span id="span${elem.id}">&#10007;</span></a>\n<label` +
+        ` for="span${elem.id}">${elem.title}</label></div>`;
+    taskList.appendChild(newLI);
+}
+
+function deleteTask(id) {
+    let elem = document.getElementById(id);
+    let parentElem = document.getElementById("tasks");
+    $.ajax({
+        url: currentURL + '/api/task/' + id,
+        type: 'DELETE',
+        success: function (result, status, xhr) {
+            if (xhr.status === 204) {
+                parentElem.removeChild(elem);
+                let array = tasksMap[currentListId];
+                for (let i in array) {
+                    let task = array[i];
+                    if (task.id === id) {
+                        array.splice(i, 1);
+                        break;
+                    }
+                }
+            } else {
+                alert("Что-то пошло не так. Код ответа: " + xhr.status)
+            }
+        },
+        error: function (result, status, xhr) {
+            alert("Что-то пошло не так, задача не удалена. Код ошибки: " + xhr.status)
+        }
+    });
+}
 
 function listSelected(id, name) {
     let tasksName = document.querySelector("div.main > h2");
@@ -57,12 +102,7 @@ function listSelected(id, name) {
 
     for (let i in tasks) {
         let task = tasks[i];
-        let newLI = document.createElement('li');
-        newLI.setAttribute('id', task.id);
-        newLI.innerHTML = `<div class="line" id="line${task.id}"><a href="#" onclick="deleteTask(${task.id})"` +
-                          `><span id="span${task.id}">&#10007;</span></a>\n<label` +
-                          ` for="span${task.id}">${task.title}</label></div>`;
-        taskList.appendChild(newLI);
+        addTaskHTML(task);
     }
 
 }

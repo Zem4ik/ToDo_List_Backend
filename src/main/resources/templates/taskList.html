@@ -39,6 +39,13 @@
 		</div>
 		<div class="main">
 			<h2>Select task list</h2>
+            <div class="addTask">
+                <h4>Добавить задачу:</h4>
+                <div id="taskAddDiv">
+                    <input type="text" id="taskTextAdd" maxlength="50" placeholder="Введите задачу">
+                    <a href="#" onclick="addTask()"><span id="checkAddTask">&#10004;</span></a>
+                </div>
+            </div>
 			  <ul id="tasks">
 			  	<li>
 			  		<div class="line" id="3">
@@ -53,6 +60,7 @@
 			  		</div>
 			  	</li>
 			  </ul>
+
 		</div>
 	</div>
 </main>
