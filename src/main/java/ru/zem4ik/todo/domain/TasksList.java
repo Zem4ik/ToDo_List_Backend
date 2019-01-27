@@ -1,5 +1,6 @@
 package ru.zem4ik.todo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,11 +10,11 @@ import java.util.Set;
 @Entity
 @Data
 @EqualsAndHashCode(exclude = {"users", "tasks"})
-@ToString(exclude = "users")
+@ToString(exclude = {"users", "tasks"})
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Table(name = "lists")
-public class List {
+public class TasksList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -23,8 +24,10 @@ public class List {
     private String icon;
 
     @ManyToMany(mappedBy = "lists")
+    @JsonIgnore
     private Set<User> users = new HashSet<>();
     @OneToMany(mappedBy = "list")
+    @JsonIgnore
     private Set<Task> tasks = new HashSet<>();
 
 }

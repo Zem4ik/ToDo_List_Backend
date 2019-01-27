@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/taskList.css}">
+
+</head>
+<body>
+<header>
+	<div id="header">
+		<div class="back">
+			<div class="headerlogo">
+			</div>
+			<div class="headertext">
+				<a href="">To Do List</a>
+			</div>
+	    </div>
+	</div>
+</header>
+
+<main>
+	<div class="mainpart">
+		<div class="sideMenu">
+			<div class="sidenav">
+				<div id="lists">
+		  			<a href="#" action="selectList">List 1</a>
+		  			<a href="#" action="selectList">List 2</a>
+		  			<a href="#" action="selectList">List 3</a>
+		  			<a href="#" action="selectList">List 4</a>
+		  		</div>
+		  		<a id="logoutButton" href="" action="logout">PRESS HERE TO LOGOUT</a>
+			</div>
+		</div>
+		<div class="main">
+			<h2>Select task list</h2>
+			  <ul id="tasks">
+			  	<li>
+			  		<div class="line" id="3">
+			  			<a href="#"><span id="span3">&#10007;</span></a>
+			  			<label for="span3">Яблоко</label>
+			  		</div>
+			  	</li>
+			  	<li>
+			  		<div class="line" id="4">
+			  			<a href="#"><span id="span4">&#10007;</span></a>
+			  			<label for="span4">Пирожок</label>
+			  		</div>
+			  	</li>
+			  </ul>
+		</div>
+	</div>
+</main>
+<footer></footer>
+<script type="text/javascript" th:src="@{/js/taskList.js}"></script>
+<script th:inline="javascript">
+	/*<![CDATA[*/
+
+	var lists = /*[[${lists}]]*/ null;
+	var tasksMap = /*[[${tasksMap}]]*/ null;
+
+	/*]]>*/
+</script>
+</body>
+</html>

@@ -42,7 +42,7 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name = "userID", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "listID", referencedColumnName = "id")
     )
-    Set<List> lists = new HashSet<>();
+    Set<TasksList> lists = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
