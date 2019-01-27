@@ -19,15 +19,15 @@ create table lists
 
 create table user_lists
 (
-  userID bigint references users (id),
-  listID bigint references lists (id),
+  userID bigint references users (id) ON DELETE CASCADE,
+  listID bigint references lists (id) ON DELETE CASCADE,
   primary key (userID, listID)
 );
 
 create table tasks
 (
   id          identity primary key,
-  list_id     bigint references lists (id),
+  list_id     bigint references lists (id) ON DELETE CASCADE,
   title       varchar(50) not null,
   important   boolean,
   date        date,
@@ -37,8 +37,8 @@ create table tasks
 create table comments
 (
   id     identity primary key,
-  taskID int references tasks (id),
-  userID int references users (id),
+  taskID int references tasks (id) ON DELETE CASCADE,
+  userID int references users (id) ON DELETE CASCADE,
   text   text not null,
   date   date,
   time   time

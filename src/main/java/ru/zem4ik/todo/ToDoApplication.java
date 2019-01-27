@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import ru.zem4ik.todo.data.ListRepository;
 import ru.zem4ik.todo.data.TaskRepository;
 import ru.zem4ik.todo.data.UserRepository;
 import ru.zem4ik.todo.domain.TasksList;
@@ -25,7 +26,7 @@ public class ToDoApplication {
     @Bean
     @Profile("dev")
     public CommandLineRunner dataLoader(UserRepository userRepository, TaskRepository taskRepository,
-                                        PasswordEncoder passwordEncoder) {
+                                        ListRepository listRepository, PasswordEncoder passwordEncoder) {
         return args -> {
             User user = new User("todo", passwordEncoder.encode("todo"));
 
@@ -43,6 +44,12 @@ public class ToDoApplication {
                 }
                 taskRepository.saveAll(list.getTasks());
             }
+            TasksList list = new TasksList("NEW TEST");
+            list.getUsers().add(user);
+            listRepository.save(list);
+            user.getLists().add(list);
+            userRepository.save(user);
+
 
             User user2 = new User("test", passwordEncoder.encode("test"));
             userRepository.save(user2);
