@@ -1,8 +1,9 @@
 var currentListId;
 var currentURL = window.location.origin;
-
+var divToHide = document.getElementsByClassName("addTask")[0];
 
 window.onload = (function () {
+    divToHide.style.display = 'none';
     console.log(lists);
     console.log(tasksMap);
     currentListId = lists[0].id;
@@ -79,6 +80,16 @@ function deleteList(id) {
             if (xhr.status === 204) {
                 parent.removeChild(selectedList);
                 tasksMap[id] = null;
+                if (id === currentListId) {
+                    document.querySelector("div.main > h3").innerHTML = 'Выберите список задач или создайте новый';
+                    divToHide.style.display = 'none';
+                    let taskList = document.getElementById("tasks");
+
+                    while (taskList.firstChild) {
+                        taskList.removeChild(taskList.firstChild);
+                    }
+
+                }
             } else {
                 alert("Что-то пошло не так. Код: " + xhr.status);
             }
@@ -155,8 +166,9 @@ function deleteTask(id) {
 }
 
 function listSelected(id, name) {
+    divToHide.style.display = 'block';
     currentListId = id;
-    let tasksName = document.querySelector("div.main > h2");
+    let tasksName = document.querySelector("div.main > h3");
     tasksName.textContent = name;
 
     let taskList = document.getElementById("tasks");
@@ -171,5 +183,4 @@ function listSelected(id, name) {
         let task = tasks[i];
         addTaskHTML(task);
     }
-
 }

@@ -31,7 +31,7 @@
                 <div class="addList">
                     <h3>Добавить список:</h3>
                     <div id="listAddDiv">
-                        <input type="text" id="listTextAdd" pattern="^(?!\s*$).+" maxlength="50" placeholder="Введите название списка">
+                        <input type="text" id="listTextAdd" pattern="^(?!\s*$).+" maxlength="50" placeholder="Введите название списка" onkeydown="if (event.which === 13) {addList();}">
                         <a href="#" onclick="addList()"><span id="checkAddList">&#10004;</span></a>
                     </div>
                 </div>
@@ -42,27 +42,16 @@
 			</div>
 		</div>
 		<div class="main">
-			<h2>Select task list</h2>
+			<h3>Выберите список задач или создайте новый</h3>
             <div class="addTask">
                 <h4>Добавить задачу:</h4>
                 <div id="taskAddDiv">
-                    <input type="text" id="taskTextAdd" pattern="^(?!\s*$).+" maxlength="50" placeholder="Введите задачу">
+                    <input type="text" id="taskTextAdd" pattern="^(?!\s*$).+" maxlength="50" placeholder="Введите задачу" onkeydown="if (event.which === 13) {addTask();}">
                     <a href="#" onclick="addTask()"><span id="checkAddTask">&#10004;</span></a>
                 </div>
             </div>
 			  <ul id="tasks">
-			  	<li>
-			  		<div class="line" id="3">
-			  			<a href="#"><span id="span3">&#10007;</span></a>
-			  			<label for="span3">Яблоко</label>
-			  		</div>
-			  	</li>
-			  	<li>
-			  		<div class="line" id="4">
-			  			<a href="#"><span id="span4">&#10007;</span></a>
-			  			<label for="span4">Пирожок</label>
-			  		</div>
-			  	</li>
+
 			  </ul>
 
 		</div>
