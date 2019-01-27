@@ -72,7 +72,7 @@ function addTask() {
         }),
         contentType: "application/json",
         success: function (result, status, xhr) {
-            if (xhr.status === 204) {
+            if (xhr.status === 201) {
                 addTaskHTML(result);
                 let array = tasksMap[currentListId];
                 array.push(result);
