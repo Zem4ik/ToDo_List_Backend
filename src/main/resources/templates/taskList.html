@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/taskList.css}">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+<body>
+<header>
+	<div id="header">
+		<div class="back">
+			<div class="headerlogo">
+			</div>
+			<div class="headertext">
+				<a href="">To Do List</a>
+			</div>
+	    </div>
+	</div>
+</header>
+
+<main>
+	<div class="mainpart">
+		<div class="sideMenu">
+			<div class="sidenav">
+                <div class="addList">
+                    <h3>Добавить список:</h3>
+                    <div id="listAddDiv">
+                        <input type="text" id="listTextAdd" pattern="^(?!\s*$).+" maxlength="50" placeholder="Введите название списка" onkeydown="if (event.which === 13) {addList();}">
+                        <a href="#" onclick="addList()"><span id="checkAddList">&#10004;</span></a>
+                    </div>
+                </div>
+				<div id="lists">
+
+		  		</div>
+		  		<a id="logoutButton" href="/logout">PRESS HERE TO LOGOUT</a>
+			</div>
+		</div>
+		<div class="main">
+			<h3>Выберите список задач или создайте новый</h3>
+            <div class="addTask">
+                <h4>Добавить задачу:</h4>
+                <div id="taskAddDiv">
+                    <input type="text" id="taskTextAdd" pattern="^(?!\s*$).+" maxlength="50" placeholder="Введите задачу" onkeydown="if (event.which === 13) {addTask();}">
+                    <a href="#" onclick="addTask()"><span id="checkAddTask">&#10004;</span></a>
+                </div>
+            </div>
+			  <ul id="tasks">
+
+			  </ul>
+
+		</div>
+	</div>
+</main>
+<footer></footer>
+<script type="text/javascript" th:src="@{/js/taskList.js}"></script>
+<script th:inline="javascript">
+	/*<![CDATA[*/
+
+	var lists = /*[[${lists}]]*/ null;
+	var tasksMap = /*[[${tasksMap}]]*/ null;
+
+	/*]]>*/
+</script>
+</body>
+</html>

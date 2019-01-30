@@ -1,5 +1,6 @@
 package ru.zem4ik.todo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -20,8 +21,9 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "listId", nullable = false)
+    @JsonIgnore
     @NonNull
-    private List list;
+    private TasksList list;
     @NonNull
     private String title;
     private boolean important;

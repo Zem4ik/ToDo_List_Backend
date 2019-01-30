@@ -1,0 +1,93 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60vh;
+}
+
+div {
+    margin-top: 10px;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+
+button {
+    padding: 10px 0;
+    border-width: 0;
+    display: block;
+    width: 120px;
+    margin: 25px auto 0;
+    background: #7b7b7b;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    text-transform: uppercase;
+}
+
+a {
+    display: block;
+    text-align: right;
+}
+
+.SubmitButton {
+    width: 100%;
+    display: block;
+}
+
+form {
+    width: 25%;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px 0px;
+    border-width: 0;
+    background: white;
+    margin: 10px 0;
+    outline: 1px solid black;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 50px;
+}
+
+
+button:hover {
+    color: black;
+}
+
+
+a {
+    margin-top: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+label {
+    color: #7b7b7b;
+}
+
+.alert {
+    width: 100%;
+    display: block;
+    margin-top: 10px;
+    color: red;
+    text-align: center;
+}

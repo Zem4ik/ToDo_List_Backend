@@ -1,25 +1,25 @@
 package ru.zem4ik.todo.data.lists;
 
-import ru.zem4ik.todo.domain.List;
+import ru.zem4ik.todo.domain.TasksList;
 
 public class ListUtils {
     private static int nextListId = 0;
 
     final static String NAME = "LIST_NAME";
 
-    public static List createDefaultList() {
-        List list = new List(NAME);
-        list.setIcon(null);
-        return list;
+    public static TasksList createDefaultList() {
+        TasksList tasksList = new TasksList(NAME);
+        tasksList.setIcon(null);
+        return tasksList;
     }
 
-    public static List generateNext() {
+    public static TasksList generateNext() {
         return createListById(nextListId++, null);
     }
 
-    public static List createListById(int id, String iconPath) {
-        List list = new List(NAME + id);
-        list.setIcon(iconPath);
-        return list;
+    public static TasksList createListById(int id, String iconPath) {
+        TasksList tasksList = new TasksList(NAME + id);
+        tasksList.setIcon(iconPath);
+        return tasksList;
     }
 }

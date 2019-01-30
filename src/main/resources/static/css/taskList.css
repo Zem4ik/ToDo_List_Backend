@@ -1,0 +1,211 @@
+body {
+    font-family: "Lato", sans-serif;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+#header {
+    width: 100%;
+    top: 0;
+    position: fixed;
+    background-color: #00bfff;
+    z-index: 2;
+}
+
+.back {
+    min-width: 310px;
+    width: 310px;
+    height: 100px;
+    top: 0;
+    left: 0;
+    display: flex;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#header .headerlogo {
+    width: 100px;
+    height: 100px;
+    background: url(../images/todo.svg) 100% 100% no-repeat;
+    background-size: cover;
+}
+
+#header .headertext {
+    display: flex;
+    height: 100px;
+    width: 210px;
+    min-width: 210px;
+}
+
+#header .headertext a {
+    text-decoration: none;
+    font-size: 40px;
+    font-variant: small-caps;
+    font-weight: bold;
+    line-height: 100px;
+    color: black;
+}
+
+.mainpart {
+    margin-top: 110px;
+}
+
+.sideMenu {
+    height: 100%;
+    width: 260px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav {
+    height: auto;
+    top: 0;
+    position: fixed;
+    width: 260px;
+}
+
+#lists {
+    width: 100%;
+    min-height: 65px;
+}
+
+#lists a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+}
+
+.addList h3 {
+    text-align: center;
+    font-size: 18px;
+    color: #818181;
+}
+
+.addList {
+    margin-top: 100px;
+    width: 260px;
+    height: 30px;
+    padding: 6px 0;
+}
+
+.addList a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    line-height: 30px;
+    display: block;
+}
+
+#listAddDiv input {
+    border-radius: 5px;
+    border-width: 2px;
+    outline: none;
+}
+
+#listTextAdd {
+    margin-left: 20px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    height: 30px;
+    width: 190px;
+    float: left;
+    font-size: 15px;
+}
+
+#checkAddList {
+    float: right;
+    margin-left: 10px;
+    width: 20px;
+    line-height: 30px;
+    text-decoration: none;
+    color: green;
+}
+
+.listLine {
+    display: flex;
+    width: 100%;
+}
+
+.listNameLine {
+    color: #818181;
+    width: 200px;
+    float: left;
+}
+
+.listNameLine:hover {
+    color: #f1f1f1;
+}
+
+.spanNameLine {
+    color: #818181;
+    line-height: 30px;
+}
+
+.spanNameLine:hover {
+    color: red;
+}
+
+#logoutButton {
+    vertical-align: middle;
+    text-align: center;
+    margin-top: 10px;
+    padding: 12px 0 12px 0;
+    background-color: #00bfff;
+    text-decoration: none;
+    color: black;
+    display: block;
+    width: 100%;
+}
+
+#logoutButton:hover {
+    color: #f1f1f1;
+}
+
+.main {
+    margin-left: 260px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+.main li {
+    list-style-type: none;
+}
+
+.main li a {
+    color: red;
+}
+
+.main #taskAddDiv {
+    display: flex;
+    width: 450px;
+    height: 40px;
+}
+
+.main #taskAddDiv input {
+    width: 400px;
+    font-size: 20px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border-width: 2px;
+    outline: none;
+}
+
+.main #taskAddDiv a {
+    margin-left: 10px;
+    color: green;
+    line-height: 40px;
+}
+
+.addTask {
+    display: none;
+}

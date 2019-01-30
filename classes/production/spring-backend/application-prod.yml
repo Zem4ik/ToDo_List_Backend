@@ -1,0 +1,24 @@
+spring:
+
+  # ===============================
+  # DATABASE
+  # ===============================
+  datasource:
+    url: jdbc:postgresql://localhost:5432/todo
+    username: todo
+    password: ToDo2018
+    schema: classpath:/db/postgres/schema.sql
+
+  # ===============================
+  # JPA / HIBERNATE
+  # ===============================
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+server:
+  ssl:
+    key-store: /etc/letsencrypt/live/zem4ik.ru/keystore.p12
+    key-store-password: ToDo@)!(
+    keyStoreType: PKCS12
+    key-alias: tomcat

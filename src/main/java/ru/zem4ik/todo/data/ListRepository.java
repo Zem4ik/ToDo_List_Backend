@@ -1,12 +1,13 @@
 package ru.zem4ik.todo.data;
 
 import org.springframework.data.repository.CrudRepository;
-import ru.zem4ik.todo.domain.List;
+import ru.zem4ik.todo.domain.TasksList;
+import ru.zem4ik.todo.domain.User;
 
-public interface ListRepository extends CrudRepository<List, Long> {
+import java.util.List;
 
-    java.util.List<List> findAll();
+public interface ListRepository extends CrudRepository<TasksList, Long> {
 
-    List findByUsers_Username(String username);
+    List<TasksList> findByUsers(User user);
 
 }
