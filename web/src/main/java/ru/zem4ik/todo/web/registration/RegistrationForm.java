@@ -1,4 +1,4 @@
-package ru.zem4ik.todo.security.registration;
+package ru.zem4ik.todo.web.registration;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

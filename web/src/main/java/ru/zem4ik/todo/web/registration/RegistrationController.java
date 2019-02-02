@@ -1,4 +1,4 @@
-package ru.zem4ik.todo.security.registration;
+package ru.zem4ik.todo.web.registration;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
