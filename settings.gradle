@@ -1,2 +1,9 @@
 rootProject.name = 'spring-backend'
+include 'domain'
+include 'data'
+include 'security'
+include 'storage'
+include 'api'
+include 'web'
+include 'main'
 

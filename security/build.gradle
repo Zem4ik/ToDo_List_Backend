@@ -1,0 +1,11 @@
+group 'ru.zem4ik.todo'
+version '1.0-SNAPSHOT'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation project(':domain')
+    implementation project(':data')
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+}
