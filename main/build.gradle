@@ -1,6 +1,7 @@
 plugins {
     id "com.palantir.docker" version "0.20.1"
 }
+apply plugin: 'org.springframework.boot'
 
 docker {
     dependsOn bootJar
@@ -20,4 +21,5 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
