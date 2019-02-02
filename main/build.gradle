@@ -1,0 +1,25 @@
+plugins {
+    id "com.palantir.docker" version "0.20.1"
+}
+apply plugin: 'org.springframework.boot'
+
+docker {
+    dependsOn bootJar
+    name "${projects.group}/${tasks.bootJar.baseName}"
+    dockerfile file("Docker/Dockerfile")
+    files tasks.bootJar.outputs
+    buildArgs(["JAR_FILE": "${tasks.bootJar.outputs.files.singleFile.name}"])
+}
+
+dependencies {
+    compile project(':domain')
+    compile project(':data')
+    compile project(':api')
+    compile project(':web')
+    compile project(':security')
+    compile project(':storage')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
